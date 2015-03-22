@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <import resource="dataSource-context.xml"/>
+
+    <bean id="simpleJdbcTemplate" class="org.springframework.jdbc.core.simple.SimpleJdbcTemplate">
+        <constructor-arg ref="dbcpDataSource"/>
+    </bean>
+
+    <bean id="templateUserDao" class="com.hyzhou.database.dao.jdbc.template.impl.UserDaoJdbcTemplateImpl">
+        <property name="simpleJdbcTemplate" ref="simpleJdbcTemplate"/>
+    </bean>
+</beans>

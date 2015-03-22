@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+        "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="User">
+    <resultMap id="UserResult" class="com.hyzhou.database.model.User">
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="age" column="age"/>
+        <result property="birth" column="birth"/>
+    </resultMap>
+
+    <insert id="addUser" parameterClass="com.hyzhou.database.model.User">
+        INSERT INTO user (name, age, birth) VALUES (#name#, #age#, #birth#)
+        <selectKey keyProperty="id" resultClass="java.lang.Long">
+            SELECT LAST_INSERT_ID() AS ID
+        </selectKey>
+    </insert>
+
+    <update id="saveUser" parameterClass="com.hyzhou.database.model.User">
+        UPDATE user SET name = #name#, age = #age#, birth = #birth# WHERE id = #id#
+    </update>
+
+    <select id="getUserById" parameterClass="int" resultMap="UserResult">
+        SELECT id, name, age, birth FROM user WHERE id = #id#
+    </select>
+
+    <select id="getUserByName" parameterClass="java.lang.String" resultMap="UserResult">
+        SELECT id, name, age, birth FROM user WHERE name = #name#
+    </select>
+</sqlMap>

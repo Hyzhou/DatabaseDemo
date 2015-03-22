@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath*:database.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <!-- DBCP(DataBase Connection Pool) 数据连接池提供数据源 -->
+    <bean id="dbcpDataSource" class="org.apache.commons.dbcp.BasicDataSource">
+        <property name="driverClassName" value="${database.driver}"/>
+        <property name="url" value="${database.url}"/>
+        <property name="username" value="${database.username}"/>
+        <property name="password" value="${database.password}"/>
+        <property name="initialSize" value="5"/>
+        <property name="maxActive" value="10"/>
+    </bean>
+
+    <!-- JDBC驱动提供数据源 没有连接池功能 -->
+    <!-- SingleConnectionDataSource 每次请求提供同一个数据库连接 -->
+    <bean id="jdbcDriveSingleDataSource" class="org.springframework.jdbc.datasource.SingleConnectionDataSource">
+        <property name="driverClassName" value="${database.driver}"/>
+        <property name="url" value="${database.url}"/>
+        <property name="username" value="${database.username}"/>
+        <property name="password" value="${database.password}"/>
+    </bean>
+
+    <!-- DriverManagerDataSource 每次请求提供一个新的数据库连接 -->
+    <bean id="jdbcDriveDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="${database.driver}"/>
+        <property name="url" value="${database.url}"/>
+        <property name="username" value="${database.username}"/>
+        <property name="password" value="${database.password}"/>
+    </bean>
+</beans>

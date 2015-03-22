@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <import resource="dataSource-context.xml"/>
+
+    <bean id="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+        <property name="configLocation" value="classpath:sqlmap/sqlmap-config.xml"/>
+        <property name="dataSource" ref="dbcpDataSource"/>
+    </bean>
+
+    <bean id="userDao" class="com.hyzhou.database.dao.ibatis.impl.UserDaoIbatisImpl">
+        <property name="sqlMapClient" ref="sqlMapClient"/>
+    </bean>
+</beans>
