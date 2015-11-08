@@ -1,4 +1,4 @@
-package com.hyzhou.database.dao.ibatis.impl;
+package com.hyzhou.database.dao.ibatis.spring.impl;
 
 import com.hyzhou.database.dao.UserDao;
 import com.hyzhou.database.model.User;

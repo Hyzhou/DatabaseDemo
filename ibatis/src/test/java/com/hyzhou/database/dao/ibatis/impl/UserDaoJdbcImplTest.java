@@ -1,9 +1,7 @@
+package com.hyzhou.database.dao.ibatis.impl;
+
 import com.hyzhou.database.dao.UserDao;
-import com.hyzhou.database.dao.ibatis.impl.UserDaoIbatisImpl;
 import com.hyzhou.database.model.User;
-import org.junit.Assert;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.Date;
 import java.util.List;

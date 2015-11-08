@@ -9,7 +9,7 @@
         <property name="dataSource" ref="dbcpDataSource"/>
     </bean>
 
-    <bean id="userDao" class="com.hyzhou.database.dao.ibatis.impl.UserDaoIbatisImpl">
+    <bean id="userDao" class="com.hyzhou.database.dao.ibatis.spring.impl.UserDaoIbatisImpl">
         <property name="sqlMapClient" ref="sqlMapClient"/>
     </bean>
 </beans>

@@ -1,3 +1,5 @@
+package com.hyzhou.database.dao.jdbc.impl;
+
 import com.hyzhou.database.dao.UserDao;
 import com.hyzhou.database.model.User;
 import org.junit.Assert;
@@ -11,11 +13,11 @@ import java.util.List;
 /**
  * Created by Hyzhou on 2014/12/14.
  */
-public class UserDaoJdbcDaoSupportImplTest {
+public class UserDaoJdbcImplTest {
     @Test
-    public void daoSupportSaveUser() {
-        ApplicationContext context = new ClassPathXmlApplicationContext("template-content.xml");
-        UserDao userDao = (UserDao) context.getBean("supportUserDao");
+    public void main() {
+        ApplicationContext context = new ClassPathXmlApplicationContext("content.xml");
+        UserDao userDao = (UserDao) context.getBean("userDao");
         User user1 = new User();
         user1.setName("Hyzhou");
         user1.setAge(20);

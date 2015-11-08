@@ -20,7 +20,7 @@ public class UserDaoJdbcTemplateImpl implements UserDao {
             "INSERT INTO user (name, age, birth) VALUES (:name, :age, :birth)";
 
     private static final String SQL_UPDATE_USER =
-            "UPDATE user SET name = ?, age = ?, birth = ? WHERE id = ?";
+            "UPDATE user SET name = :name, age = :age, birth = :birth WHERE id = :id";
 
     private static final String SQL_SELECT_USER_BY_ID =
             "SELECT id, name, age, birth FROM user WHERE id = ?";
